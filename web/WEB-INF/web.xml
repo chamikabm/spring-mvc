@@ -3,16 +3,54 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <!--
+        The root web application context is managed by a listener of
+        class org.springframework.web.context.ContextLoaderListener, which is part of the spring-web module.
+
+        By default, the listener will load an XML application context from /WEB-INF/applicationContext.xml.
+        However, those defaults can be changed. We can use Java annotations instead of XML, for example.
+    -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!--
+        We can specify an location of the XML context configuration with the contextConfigLocation parameter:
+        By default, the listener will load an XML application context from /WEB-INF/applicationContext.xml.
+
+        _______________________________________________
+
+        Or more than one location, separated by commas:
+        _______________________________________________
+
+        <context-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/context1.xml, /WEB-INF/context2.xml</param-value>
+        </context-param>
+
+        _________________________
+
+        We can even use patterns:
+        _________________________
+
+        <context-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/*-context.xml</param-value>
+        </context-param>
+    -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
     </context-param>
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value></param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
