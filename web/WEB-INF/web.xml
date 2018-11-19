@@ -38,6 +38,9 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>/WEB-INF/*-context.xml</param-value>
         </context-param>
+
+        This is really optional as Spring web application starts up by default it will looks for
+        the root application config file in /WEB-INF folder with name applicationContext.xml
     -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -47,9 +50,13 @@
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--
+        This init-param - contextConfigLocation is optional as Spring web application starts up by default it will
+        looks for a config file <servlet-name>-servlet.xml file inside the WEB-INF folder.
+        -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value></param-value>
+            <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
