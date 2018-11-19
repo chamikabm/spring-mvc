@@ -13,5 +13,6 @@
 <body>
     <%-- This studentName if the filed of the HTML form. --%>
     <p>Student Name : ${param.studentName}</p>
+    <p>Message : ${message}</p>
 </body>
 </html>
