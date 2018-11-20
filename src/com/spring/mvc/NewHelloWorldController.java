@@ -18,7 +18,7 @@ public class NewHelloWorldController {
     @RequestMapping("/processFormV2")
     public String letsShoutDude(@RequestParam String studentName, Model model) {
 
-        model.addAttribute("message", "Yo! " + studentName.toUpperCase());
+        model.addAttribute("message", "Hey! " + studentName.toUpperCase());
         return "helloworld";
     }
 }
